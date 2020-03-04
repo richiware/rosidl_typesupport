@@ -127,10 +127,10 @@ namespace rosidl_typesupport_cpp
 template<>
 ROSIDL_TYPESUPPORT_CPP_PUBLIC
 const rosidl_message_type_support_t *
-get_message_type_support_handle<@('::'.join([package_name] + list(interface_path.parents[0].parts)))::@(message.structure.namespaced_type.name)>()
+get_message_type_support_handle<@('::'.join(message.structure.namespaced_type.namespaced_name()))>()
 {
 @[if len(type_supports) != 1]@
-  return &::@('::'.join([package_name] + list(interface_path.parents[0].parts)))::rosidl_typesupport_cpp::@(message.structure.namespaced_type.name)_message_type_support_handle;
+  return &::@('::'.join(message.structure.namespaced_type.namespaces))::rosidl_typesupport_cpp::@(message.structure.namespaced_type.name)_message_type_support_handle;
 @[else]@
   return ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(@(list(type_supports)[0]), @(', '.join([package_name] + list(interface_path.parents[0].parts))), @(message.structure.namespaced_type.name))();
 @[end if]@
@@ -144,7 +144,7 @@ extern "C"
 ROSIDL_TYPESUPPORT_CPP_PUBLIC
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_cpp, @(', '.join([package_name] + list(interface_path.parents[0].parts))), @(message.structure.namespaced_type.name))() {
-  return get_message_type_support_handle<@('::'.join([package_name] + list(interface_path.parents[0].parts)))::@(message.structure.namespaced_type.name)>();
+  return get_message_type_support_handle<@('::'.join(message.structure.namespaced_type.namespaced_name()))>();
 }
 
 #ifdef __cplusplus

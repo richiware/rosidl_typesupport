@@ -129,7 +129,7 @@ ROSIDL_TYPESUPPORT_C_EXPORT_@(package_name)
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_c, @(', '.join([package_name] + list(interface_path.parents[0].parts))), @(message.structure.namespaced_type.name))() {
 @[if len(type_supports) != 1]@
-  return &::@('::'.join([package_name] + list(interface_path.parents[0].parts)))::rosidl_typesupport_c::@(message.structure.namespaced_type.name)_message_type_support_handle;
+  return &::@('::'.join(message.structure.namespaced_type.namespaces))::rosidl_typesupport_c::@(message.structure.namespaced_type.name)_message_type_support_handle;
 @[else]@
   return ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(@(list(type_supports)[0]), @(', '.join([package_name] + list(interface_path.parents[0].parts))), @(message.structure.namespaced_type.name))();
 @[end if]@
